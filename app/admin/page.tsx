@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import AdminDashboardClient from "./client"
 
 export const metadata: Metadata = {
-  title: "لوحة تحكم المدير | وكالة خلك فخم",
+  title: "لوحة تحكم المدير | نظام إدارة الوكالات",
   description: "لوحة تحكم المدير لإدارة المذيعين والمنصات والمعاملات المالية",
 }
 

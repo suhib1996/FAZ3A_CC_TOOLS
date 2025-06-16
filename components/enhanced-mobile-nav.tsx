@@ -62,6 +62,58 @@ export function EnhancedMobileNav() {
     setMounted(true)
   }, [])
 
+  // Admin specific routes
+  const adminRoutes = [
+    {
+      href: "/admin",
+      label: "لوحة التحكم",
+      active: pathname === "/admin",
+    },
+    {
+      href: "/admin/broadcasters",
+      label: "إدارة المذيعين",
+      active: pathname === "/admin/broadcasters",
+    },
+    {
+      href: "/financial",
+      label: "الإدارة المالية",
+      active: pathname === "/financial",
+    },
+    {
+      href: "/settings",
+      label: "الإعدادات",
+      active: pathname === "/settings",
+    },
+  ]
+
+  // Agent specific routes
+  const agentRoutes = [
+    {
+      href: "/agent/dashboard",
+      label: "لوحة التحكم",
+      active: pathname === "/agent/dashboard",
+    },
+    {
+      href: "/financial",
+      label: "الإدارة المالية",
+      active: pathname === "/financial",
+    },
+  ]
+
+  // Broadcaster specific routes
+  const broadcasterRoutes = [
+    {
+      href: "/broadcaster/dashboard",
+      label: "لوحة التحكم",
+      active: pathname === "/broadcaster/dashboard",
+    },
+    {
+      href: "/broadcaster/earnings",
+      label: "الأرباح",
+      active: pathname === "/broadcaster/earnings",
+    },
+  ]
+
   // Basic routes available to all users
   const publicRoutes = [
     {
@@ -94,47 +146,10 @@ export function EnhancedMobileNav() {
       label: "اتصل بنا",
       active: pathname === "/contact",
     },
-  ]
-
-  // Admin specific routes
-  const adminRoutes = [
     {
-      href: "/admin",
-      label: "لوحة التحكم",
-      active: pathname === "/admin",
-    },
-    {
-      href: "/financial",
-      label: "الإدارة المالية",
-      active: pathname === "/financial",
-    },
-  ]
-
-  // Agent specific routes
-  const agentRoutes = [
-    {
-      href: "/agent/dashboard",
-      label: "لوحة التحكم",
-      active: pathname === "/agent/dashboard",
-    },
-    {
-      href: "/financial",
-      label: "الإدارة المالية",
-      active: pathname === "/financial",
-    },
-  ]
-
-  // Broadcaster specific routes
-  const broadcasterRoutes = [
-    {
-      href: "/broadcaster/dashboard",
-      label: "لوحة التحكم",
-      active: pathname === "/broadcaster/dashboard",
-    },
-    {
-      href: "/broadcaster/earnings",
-      label: "الأرباح",
-      active: pathname === "/broadcaster/earnings",
+      href: "/settings",
+      label: "الإعدادات",
+      active: pathname === "/settings",
     },
   ]
 
@@ -198,7 +213,7 @@ export function EnhancedMobileNav() {
           {isAuthenticated && user ? (
             <div className="flex items-center mt-6 mb-2 p-4 bg-muted rounded-lg">
               <Avatar className="h-10 w-10 mr-3">
-                <AvatarImage src={user.avatar} alt={user.name || "User avatar"} />
+                <AvatarImage src={user.avatar || "/placeholder.svg"} alt={user.name || "User avatar"} />
                 <AvatarFallback>{user?.name?.charAt(0) || "U"}</AvatarFallback>
               </Avatar>
               <div className="flex-1">

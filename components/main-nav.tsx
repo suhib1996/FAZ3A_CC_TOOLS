@@ -41,9 +41,24 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
       active: pathname === "/competitions",
     },
     {
+      href: "/admin",
+      label: "لوحة التحكم",
+      active: pathname.startsWith("/admin"),
+    },
+    {
       href: "/financial",
       label: "الإدارة المالية",
       active: pathname === "/financial",
+    },
+    {
+      href: "/profile",
+      label: "الملف الشخصي",
+      active: pathname === "/profile",
+    },
+    {
+      href: "/settings",
+      label: "الإعدادات",
+      active: pathname === "/settings",
     },
     {
       href: "/ads",
