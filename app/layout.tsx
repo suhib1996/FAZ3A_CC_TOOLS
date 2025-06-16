@@ -30,7 +30,8 @@ export const metadata = {
     icon: "/favicon.ico",
     apple: "/icons/apple-icon.png",
   },
-    generator: 'v0.dev'
+  generator: "v0.dev",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 }
 
 export default function RootLayout({
@@ -43,20 +44,22 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3b82f6" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <AuthProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <div className="flex min-h-screen flex-col">
               <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container flex h-16 items-center justify-between">
-                  <div className="flex items-center gap-6">
-                    <Logo size="md" showText={true} href="/" />
-                    <ErrorBoundary fallback={<div className="hidden md:block">خطأ في تحميل القائمة</div>}>
+                <div className="container flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+                  <div className="flex items-center gap-4 lg:gap-6">
+                    <Logo size="sm" showText={false} href="/" className="sm:hidden" />
+                    <Logo size="md" showText={true} href="/" className="hidden sm:flex" />
+                    <ErrorBoundary fallback={<div className="hidden md:block text-sm">خطأ في تحميل القائمة</div>}>
                       <MainNav className="hidden md:flex" />
                     </ErrorBoundary>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 sm:gap-2">
                     <ErrorBoundary fallback={<div className="md:hidden">خطأ في تحميل القائمة</div>}>
                       <MobileNavigation />
                     </ErrorBoundary>
@@ -67,20 +70,32 @@ export default function RootLayout({
                 </div>
               </header>
               <DynamicNavigation />
-              <main className="flex-1">{children}</main>
-              <footer className="border-t py-6">
-                <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
-                  <p className="text-center text-sm text-muted-foreground md:text-right">
+              <main className="flex-1 w-full">{children}</main>
+              <footer className="border-t py-4 sm:py-6">
+                <div className="container px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-between gap-4 md:flex-row">
+                  <p className="text-center text-xs sm:text-sm text-muted-foreground md:text-right">
                     &copy; {new Date().getFullYear()} نظام إدارة الوكالات. جميع الحقوق محفوظة.
                   </p>
-                  <div className="flex items-center gap-4">
-                    <Button variant="link" asChild className="text-sm text-muted-foreground hover:text-primary">
+                  <div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-center">
+                    <Button
+                      variant="link"
+                      asChild
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary p-1 sm:p-2"
+                    >
                       <Link href="/terms">الشروط والأحكام</Link>
                     </Button>
-                    <Button variant="link" asChild className="text-sm text-muted-foreground hover:text-primary">
+                    <Button
+                      variant="link"
+                      asChild
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary p-1 sm:p-2"
+                    >
                       <Link href="/privacy">سياسة الخصوصية</Link>
                     </Button>
-                    <Button variant="link" asChild className="text-sm text-muted-foreground hover:text-primary">
+                    <Button
+                      variant="link"
+                      asChild
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary p-1 sm:p-2"
+                    >
                       <Link href="/contact">اتصل بنا</Link>
                     </Button>
                   </div>

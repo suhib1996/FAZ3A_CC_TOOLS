@@ -38,18 +38,18 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 // Sample user data for simulation
 const SAMPLE_USERS: Record<string, { user: User; password: string }> = {
-  "admin@agencymanagement.com": {
+  "admin@khalakfakhem.com": {
     user: {
       id: "USR-001",
       name: "مدير النظام",
-      email: "admin@agencymanagement.com",
+      email: "admin@khalakfakhem.com",
       role: "admin",
       avatar: "/placeholder.svg?height=36&width=36",
       badges: 5,
       status: "active",
       createdAt: new Date(2024, 0, 1),
     },
-    password: "SecureAdmin2024!",
+    password: "admin123",
   },
 }
 
