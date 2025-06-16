@@ -71,8 +71,11 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
     <nav
       className={cn(
         "flex items-center space-x-4 space-x-reverse lg:space-x-6 lg:space-x-reverse overflow-x-auto",
+        "scrollbar-hide py-2 px-1",
         className,
       )}
+      role="navigation"
+      aria-label="التنقل الرئيسي"
       {...props}
     >
       {routes.map((route) => (
@@ -80,11 +83,26 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
           key={route.href}
           href={route.href}
           className={cn(
-            "text-sm font-medium transition-colors hover:text-primary whitespace-nowrap",
-            route.active ? "text-primary" : "text-muted-foreground",
+            "relative text-sm font-medium transition-all duration-200 ease-in-out whitespace-nowrap",
+            "px-3 py-2 rounded-lg hover:bg-accent/50 hover:text-accent-foreground",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+            "active:scale-95 transform",
+            route.active
+              ? "text-primary bg-primary/10 border border-primary/20 shadow-sm font-semibold" +
+                  " before:absolute before:bottom-0 before:left-1/2 before:transform before:-translate-x-1/2" +
+                  " before:w-6 before:h-0.5 before:bg-primary before:rounded-full" +
+                  " after:absolute after:inset-0 after:bg-primary/5 after:rounded-lg after:-z-10"
+              : "text-muted-foreground hover:text-foreground",
           )}
+          aria-current={route.active ? "page" : undefined}
         >
-          {route.label}
+          <span className="relative z-10">{route.label}</span>
+          {route.active && (
+            <span
+              className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full animate-pulse"
+              aria-hidden="true"
+            />
+          )}
         </Link>
       ))}
     </nav>
