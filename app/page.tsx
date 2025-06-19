@@ -121,7 +121,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="flex-1">
                   <p className="text-sm sm:text-base text-muted-foreground">
-                    نعمل على إضافة منصة جديدة إلى قائمة المنصات المدعومة. ترقبوا المزيد من التفاصيل قريباً.
+                    نعمل على إضافة منصة جديدة إلى قائم�� المنصات المدعومة. ترقبوا المزيد من التفاصيل قريباً.
                   </p>
                 </CardContent>
                 <CardFooter>
